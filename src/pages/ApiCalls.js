@@ -9,6 +9,10 @@ export default function Jokes({isLoggedIn}) {
     apiFacade.getJokes().then((data) => setDataFromServer(data));
   }, []);
 
+  useEffect(() => {
+    apiFacade.getQuote().then((data) => setDataFromServer1(data));
+  }, []);
+
   const handleClick = (e) => {
     e.preventDefault();
     apiFacade.getQuote().then((data) => setDataFromServer1(data));
@@ -22,17 +26,14 @@ export default function Jokes({isLoggedIn}) {
           <h2 className="text-center mt-5 mb-2">Api Calls(On load)</h2>
           <p className="text-center">{dataFromServer.chuckValue}</p>
           <p className="text-center">{dataFromServer.dadValue}</p>
-          <p className="text-center">{dataFromServer.insult}</p>
           <h2 className="text-center mt-5 mb-2">Api Calls(On Click)</h2>
           <button type="submit" className="btn btn-primary" onClick={handleClick}>Load quotes</button>
           <p className="text-center mt-2">{dataFromServer1.friendsChar}</p>
           <p className="text-center">{dataFromServer1.friendsQuote}</p>
           {isLoggedIn && (
             <div className="mt-5">
-              <p>*******************</p>
-              <h4>Only visable if logged in</h4>
-              <p>Add custom features for users</p>
-              <p>*******************</p>
+              <h2>Api Calls(When logged in only)</h2>
+              <p className="text-center mt-5">{dataFromServer.insult}</p>
               </div>
           )}
           <div className="col-3"></div>

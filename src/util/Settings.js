@@ -1,3 +1,3 @@
-const SERVER_URL = "https://dachma.dk/ca3_backend";
+const SERVER_URL = "https://vamada.dk/ca3_personal_backend";
 
 export default SERVER_URL;

@@ -24,9 +24,52 @@ function getQuote() {
     });
 }
 
+function getTodo() {
+  return fetch(SERVER_URL + "/api/todos/all")
+    .then(handleHttpErrors)
+    .catch((err) => {
+      if (err.status) {
+        err.fullError.then((e) => console.log(e.message));
+      } else {
+        console.log("Network error");
+      }
+    });
+}
+
+/* function addTodo({todotext}){
+  const options = makeOptions("POST", todotext)
+    return fetch(SERVER_URL + "/api/todos/add", options)
+    .then(handleHttpErrors)
+    .catch((err) => {
+      if (err.status) {
+        err.fullError.then((e) => console.log(e.message));
+      } else {
+        console.log("Network error");
+      }
+    });
+  } */
+
+  function addTodo (todotext){
+    const options = makeOptions("POST", {
+      todoText: todotext,
+    });
+    return fetch(SERVER_URL+ "/api/todos/add" ,options)
+    .then(handleHttpErrors)
+    .catch((err) => {
+      if (err.status) {
+        err.fullError.then((e) => console.log(e.message));
+      } else {
+        console.log("Network error");
+      }
+    });
+}
+
+
 const apiFacade = {
   getJokes,
   getQuote,
+  getTodo,
+  addTodo
 };
 
 function makeOptions(method, body) {

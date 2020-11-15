@@ -23,7 +23,7 @@ function NavBar({ loginMsg, isLoggedIn, user }) {
           <>
             <li>
               <NavLink activeClassName="active" to="/secure-page">
-                Secure page
+                Todos
               </NavLink>
             </li>
           </>
